@@ -43,6 +43,8 @@ function renderMarkup(country) {
     };
 
     if (country.length > 10) {
+        clearCountryList();
+        clearCountryInfo();
         Notify.info("Too many matches found. Please enter a more specific name.");
     };
 }
