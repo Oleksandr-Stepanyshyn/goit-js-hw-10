@@ -33,13 +33,13 @@ function renderMarkup(country) {
 
     if(country.length === 1) {
         clearCountryList();
-        renderMarkupCard(country[0]);
+        renderMarkupCard(...country);
     };
 
     if(country.length > 1 && country.length <= 10) {
-        clearCountryList();
         clearCountryInfo();
-        country.map(renderMarkupList);
+        const markupList = country.map(createCountriesList).join('');
+        renderMarkupList(markupList);
     };
 
     if (country.length > 10) {
@@ -47,9 +47,12 @@ function renderMarkup(country) {
     };
 }
 
+function createCountriesList (country) {
+    return countriesList(country);
+}
+
 function renderMarkupList (countries) {
-    const markupList = countriesList(countries);
-    refs.countryList.insertAdjacentHTML('beforeend', markupList);
+    refs.countryList.innerHTML = countries;
 }
 
 function renderMarkupCard ({flags,name,capital,population,languages}) {
@@ -61,6 +64,7 @@ function renderMarkupCard ({flags,name,capital,population,languages}) {
                     <p class="country-population">Population: ${population}</p>
                     <p class="country-languages">Languages: ${Object.values(languages)}</p>`;
     refs.countryInfo.innerHTML = markup;
+    refs.countryInfo.style.marginLeft = '40px';
 }
 
 function onFetchError () {
