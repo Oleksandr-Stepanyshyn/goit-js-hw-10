@@ -1,9 +1,9 @@
-import {fetchCountries} from './fetchCountries';
-import countriesList from '../templates/countrys-list.hbs';
-// import countryItem from '../templates/country-cards.hbs';
+import {fetchCountries} from './js/fetchCountries';
+import countriesList from './templates/countrys-list.hbs';
+// import countryItem from './templates/country-cards.hbs';
 var debounce = require('lodash.debounce');
 import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import "../css/styles.css";
+import "./css/styles.css";
 
 const refs = {
     searchField: document.querySelector('#search-box'),
